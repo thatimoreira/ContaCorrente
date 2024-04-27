@@ -58,7 +58,14 @@ public class Main
                 }
                 case 2:
                 {
-                    // Lógica Depositar
+                    double  valorDeposito;
+                    System.out.print("Informe o valor do depósito: R$");
+                    valorDeposito = teclado.nextDouble();
+                    saldoCliente += valorDeposito;
+                    System.out.printf("Saldo atual:.................R$%.2f\n", saldoCliente);
+                    System.out.println("\nDepósito efetuado com sucesso!\n");
+                    System.out.println("------------------------------------------------------\n");
+                    break;
                 }
                 case 3:
                 {
