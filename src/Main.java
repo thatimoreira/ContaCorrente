@@ -1,14 +1,4 @@
-// Menu de opções
-// Visualização de saldo
-// Receber valor
-
 import java.util.Scanner;;
-
-/*public static void exibirMenu(String nome, String tpConta, double saldo)
-{
-    // TODO Auto-generated method stub
-   
-}*/
 
 public class Main
 {
@@ -34,26 +24,29 @@ public class Main
             5- Sair
                 """;
         opcaoCliente = 0;
-        System.out.println("\n===================== MEU BANCO =====================\n");
+        System.out.println("\n====================== MEU BANCO ======================\n");
         System.out.printf("Cliente:.........%s\n", nomeCliente);
         System.out.printf("Tipo de conta:...%s\n", tipoConta);
         System.out.printf("Saldo:...........R$%.2f\n", saldoCliente);
-        System.out.println("\n=====================================================\n");
+        System.out.println("\n=======================================================\n");
 
-        //exibirMenu(nomeCliente, tipoConta, saldoCliente);
         teclado = new Scanner(System.in);
         while (opcaoCliente != 5)
         {
             System.out.println(menu);
+            System.out.print("Opção: ");
             opcaoCliente = teclado.nextInt();
-            System.out.println("------------------------------------------------------\n");
+            if (opcaoCliente != 5)
+            {
+                System.out.println("\n-------------------------------------------------------\n");
+            }
             switch (opcaoCliente)
             {
                 case 1:
                 {
-                    //exibirSaldo();
+                    
                     System.out.printf("Saldo atual:.....R$%.2f\n", saldoCliente);
-                    System.out.println("\n------------------------------------------------------\n");
+                    System.out.println("\n-------------------------------------------------------\n");
                     break;
                 }
                 case 2:
@@ -61,10 +54,18 @@ public class Main
                     double  valorDeposito;
                     System.out.print("Informe o valor do depósito: R$");
                     valorDeposito = teclado.nextDouble();
-                    saldoCliente += valorDeposito;
-                    System.out.printf("Saldo atual:.................R$%.2f\n", saldoCliente);
-                    System.out.println("\nDepósito efetuado com sucesso!\n");
-                    System.out.println("------------------------------------------------------\n");
+                    if (valorDeposito <= 0)
+                    {
+                        System.out.println("\nValor inválido!\n\nDepósito não efetuado\n");
+                        System.out.println("-------------------------------------------------------\n");
+                    }
+                    else
+                    {
+                        saldoCliente += valorDeposito;
+                        System.out.printf("Saldo atual:.................R$%.2f\n", saldoCliente);
+                        System.out.println("\nDepósito efetuado com sucesso!");
+                        System.out.println("\n-------------------------------------------------------\n");
+                    }
                     break;
                 }
                 case 3:
@@ -76,14 +77,14 @@ public class Main
                     {
                         saldoCliente -= valorSaque;
                         System.out.printf("Saldo atual:..............R$%.2f\n", saldoCliente);
-                        System.out.println("\nSaque efetuado com sucesso!\n");
+                        System.out.println("\nSaque efetuado com sucesso!");
                     }
                     else
                     {
                         System.out.printf("Saldo atual:..............R$%.2f\n", saldoCliente);
-                        System.out.println("\nSaldo insuficiente!\n");
+                        System.out.println("\nSaldo insuficiente!");
                     }
-                    System.out.println("------------------------------------------------------\n");
+                    System.out.println("\n-------------------------------------------------------\n");
                     break;
                 }
                 case 4:
@@ -95,23 +96,26 @@ public class Main
                     {
                         saldoCliente -= valorTransferencia;
                         System.out.printf("Saldo atual:......................R$%.2f\n", saldoCliente);
-                        System.out.println("\nTransferência efetuada com sucesso!\n");
+                        System.out.println("\nTransferência efetuada com sucesso!");
                     }
                     else
                     {
                         System.out.printf("Saldo atual:......................R$%.2f\n", saldoCliente);
-                        System.out.println("\nSaldo insuficiente!\n");
+                        System.out.println("\nSaldo insuficiente!");
                     }
-                    System.out.println("------------------------------------------------------\n");
+                    System.out.println("\n-------------------------------------------------------\n");
                     break;
                 }
                 case 5:
                 {
-                    // Lógica Sair + mensagem de saida
+                    System.out.println("\nO MEU BANCO agradece por utilizar nossos serviços!");
+                    System.out.println("\n======================================================\n");
+                    break;
                 }
                 default:
                 {
-                    // Lógica Opção inválida
+                    System.out.println("Opção inválida!\n\nEscolha uma opção entre 1 e 5\n");
+                    System.out.println("-------------------------------------------------------\n");
                 }
             }
         }
